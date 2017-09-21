@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import {ModalController, NavController} from 'ionic-angular';
 import {NewLocationPage} from "../new-location/new-location";
 import {LocationsService} from "../../services/locations.service";
+import {Camera} from "@ionic-native/camera";
 import {MapPage} from "../map/map";
-import { Place } from "../../model/place.model";
+import {CameraPage} from "../camera/camera"
+
 
 @Component({
   selector: 'page-home',
@@ -25,5 +27,9 @@ export class HomePage {
   }
   openMap(location: Location){
     this.modalCtrl.create(MapPage, location).present();
+  }
+
+  openCamera(){
+    this.navCtrl.push(CameraPage);
   }
 }
