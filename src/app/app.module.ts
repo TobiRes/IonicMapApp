@@ -8,38 +8,48 @@ import { Geolocation } from "@ionic-native/geolocation";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NewLocationPage } from '../pages/new-location/new-location';
-import {LocationsService} from "../services/locations.service";
-import {MapPage} from "../pages/map/map";
+import { LocationsService } from "../services/locations.service";
+import { MapPage } from "../pages/map/map";
+import { CameraPage } from "../pages/camera/camera";
 
-import {AgmCoreModule} from "@agm/core";
+import { AgmCoreModule } from "@agm/core";
+import { Camera, CameraOptions } from "@ionic-native/camera";
+import { ToastController, AlertController } from "ionic-angular";
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     NewLocationPage,
-    MapPage
+    MapPage,
+    CameraPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyDOj_YqCL9G1YVj44JbeMhfSBm6k2onLwM"
-    })
+    }),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     NewLocationPage,
-    MapPage
+    MapPage,
+    CameraPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LocationsService,
-    Geolocation
+    Geolocation,
+    Camera,
+    ToastController,
+    AlertController
   ],
   schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
 })

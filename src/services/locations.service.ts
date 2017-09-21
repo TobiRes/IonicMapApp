@@ -1,5 +1,6 @@
 import { Place } from "../model/place.model";
 
+
 export class LocationsService {
   private places: Place[] = [];
 
