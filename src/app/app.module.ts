@@ -11,10 +11,15 @@ import { NewLocationPage } from '../pages/new-location/new-location';
 import { LocationsService } from "../services/locations.service";
 import { MapPage } from "../pages/map/map";
 import { CameraPage } from "../pages/camera/camera";
+import { RandomPage} from "../pages/random/random";
 
 import { AgmCoreModule } from "@agm/core";
 import { Camera } from "@ionic-native/camera";
 import { AlertController } from "ionic-angular";
+import { BatteryStatus } from "@ionic-native/battery-status";
+import { DBMeter } from "@ionic-native/db-meter";
+import { Flashlight } from "@ionic-native/flashlight";
+import { Gyroscope } from "@ionic-native/gyroscope";
 
 
 @NgModule({
@@ -23,7 +28,8 @@ import { AlertController } from "ionic-angular";
     HomePage,
     NewLocationPage,
     MapPage,
-    CameraPage
+    CameraPage,
+    RandomPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,8 @@ import { AlertController } from "ionic-angular";
     HomePage,
     NewLocationPage,
     MapPage,
-    CameraPage
+    CameraPage,
+    RandomPage
   ],
   providers: [
     StatusBar,
@@ -48,7 +55,11 @@ import { AlertController } from "ionic-angular";
     LocationsService,
     Geolocation,
     Camera,
-    AlertController
+    AlertController,
+    BatteryStatus,
+    DBMeter,
+    Flashlight,
+    Gyroscope
   ],
   schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
 })

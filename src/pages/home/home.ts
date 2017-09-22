@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import {ModalController, NavController} from 'ionic-angular';
 import {NewLocationPage} from "../new-location/new-location";
 import {LocationsService} from "../../services/locations.service";
-import {Camera} from "@ionic-native/camera";
 import {MapPage} from "../map/map";
 import {CameraPage} from "../camera/camera"
+import {RandomPage} from "../random/random";
 
 
 @Component({
@@ -31,5 +31,9 @@ export class HomePage {
 
   openCamera(){
     this.navCtrl.push(CameraPage);
+  }
+
+  openNative(){
+    this.navCtrl.push(RandomPage);
   }
 }

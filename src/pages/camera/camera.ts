@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { Camera, CameraOptions} from "@ionic-native/camera";
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-camera',
@@ -12,8 +13,12 @@ export class CameraPage {
 
   public pictures: any;
   public base64Image: string;
+  public battery: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private camera: Camera,
+              public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {

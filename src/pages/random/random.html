@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Native Daten</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h3>Batterie</h3>
+  <p>Aktueller Batteriestand: {{this.battery}}% und {{this.kabel}}.</p>
+  <h3>Mikrofon</h3>
+  <p>Dezibel: {{this.dbLevel}}</p>
+  <h3>Taschenlampe</h3>
+  <Button ion-button block (click)="taschenlampe()">An/Aus</Button>
+</ion-content>
