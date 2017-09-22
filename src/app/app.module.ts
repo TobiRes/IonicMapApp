@@ -13,8 +13,8 @@ import { MapPage } from "../pages/map/map";
 import { CameraPage } from "../pages/camera/camera";
 
 import { AgmCoreModule } from "@agm/core";
-import { Camera, CameraOptions } from "@ionic-native/camera";
-import { ToastController, AlertController } from "ionic-angular";
+import { Camera } from "@ionic-native/camera";
+import { AlertController } from "ionic-angular";
 
 
 @NgModule({
@@ -48,7 +48,6 @@ import { ToastController, AlertController } from "ionic-angular";
     LocationsService,
     Geolocation,
     Camera,
-    ToastController,
     AlertController
   ],
   schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
