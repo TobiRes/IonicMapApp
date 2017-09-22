@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { LocationsService } from "../../services/locations.service";
 import { Geolocation } from "@ionic-native/geolocation";
-import { ToastController } from "ionic-angular";
+import { Storage } from "@ionic/storage";
 
 @IonicPage()
 @Component({
@@ -10,18 +10,19 @@ import { ToastController } from "ionic-angular";
   templateUrl: 'new-location.html',
 })
 export class NewLocationPage {
-  location : {lat: number, lng: number} = {lat: 0, lng: 0};
+  location : {lat: number, lng: number} = {lat: Math.random() * (181-1) + 1, lng: Math.random() * (360-1) + 1};
 
   constructor(private locationService : LocationsService,
               private navCtrl : NavController,
               private geolocation: Geolocation,
-              private toastCtrl: ToastController) {
+              private storage: Storage) {
   }
 
   addPlace(value : {title: string}){
     this.locationService.addLocation({title: value.title, location: this.location});
     this.navCtrl.pop();
   }
+
   locateUser(){
     this.geolocation.getCurrentPosition()
     .then(
@@ -34,5 +35,9 @@ export class NewLocationPage {
       .catch(
         (error) => console.log("Fehler")
       );
+  }
+
+  deleteStorage(){
+    this.storage.remove("places");
   }
 }

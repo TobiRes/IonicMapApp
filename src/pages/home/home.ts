@@ -5,6 +5,8 @@ import {LocationsService} from "../../services/locations.service";
 import {MapPage} from "../map/map";
 import {CameraPage} from "../camera/camera"
 import {RandomPage} from "../random/random";
+import { Storage } from "@ionic/storage";
+import {Place} from "../../model/place.model";
 
 
 @Component({
@@ -14,19 +16,22 @@ import {RandomPage} from "../random/random";
 export class HomePage {
   places: { title: string }[] = [];
 
-  constructor(public navCtrl: NavController, private locationService: LocationsService, private modalCtrl: ModalController) {
-
+  constructor(public navCtrl: NavController,
+              private locationService: LocationsService,
+              private modalCtrl: ModalController,
+              public storage: Storage) {
   }
 
   ionViewWillEnter(){
-    this.places = this.locationService.getLocation();
+    this.locationService.getLocation().then(
+      (places) => this.places = places
+    );
   }
-
   newLoc(){
     this.navCtrl.push(NewLocationPage);
   }
-  openMap(location: Location){
-    this.modalCtrl.create(MapPage, location).present();
+  openMap(place: Place){
+    this.modalCtrl.create(MapPage, place).present();
   }
 
   openCamera(){

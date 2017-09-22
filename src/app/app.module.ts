@@ -21,6 +21,8 @@ import { DBMeter } from "@ionic-native/db-meter";
 import { Flashlight } from "@ionic-native/flashlight";
 import { Gyroscope } from "@ionic-native/gyroscope";
 
+import {IonicStorageModule} from "@ionic/storage";
+
 
 @NgModule({
   declarations: [
@@ -33,10 +35,11 @@ import { Gyroscope } from "@ionic-native/gyroscope";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyDOj_YqCL9G1YVj44JbeMhfSBm6k2onLwM"
     }),
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
 
   ],
   bootstrap: [IonicApp],
