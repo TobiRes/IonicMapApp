@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {BatteryStatus, BatteryStatusResponse} from "@ionic-native/battery-status";
 import { DBMeter } from "@ionic-native/db-meter";
 import { Flashlight } from "@ionic-native/flashlight";
+import { Gyroscope, GyroscopeOrientation, GyroscopeOptions} from "@ionic-native/gyroscope";
 
 
 @IonicPage()
@@ -17,12 +18,17 @@ export class RandomPage {
   public task : any;
   public task2 : any;
   public task3 : any;
+  public x: any;
+  public y: any;
+  public z: any;
+  public time: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private batteryStatus: BatteryStatus,
               private dbMeter: DBMeter,
-              private flashlight: Flashlight) {
+              private flashlight: Flashlight,
+              private gyroscope: Gyroscope) {
   }
 
   ngOnInit(){
@@ -33,15 +39,20 @@ export class RandomPage {
       this.dbM();
     }, 300);
     this.task3 = setInterval(()=> {
-      this.passivToggle();
+      this.gyro();
     }, 300);
   }
 
-  passivToggle(){
-    if(this.battery > 45)
-      this.flashlight.toggle();
+  gyro(){
+    this.gyroscope.watch()
+      .subscribe((orientation: GyroscopeOrientation) => {
+      this.x = orientation.x;
+      this.y= orientation.y;
+      this.z = orientation.z;
+      this.time = orientation.timestamp;
+      });
   }
-  
+
 
   batterie(){
   let subscription = this.batteryStatus.onChange().subscribe(
