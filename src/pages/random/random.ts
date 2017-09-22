@@ -14,6 +14,9 @@ export class RandomPage {
   public battery : any;
   public kabel : string;
   public dbLevel : any;
+  public task : any;
+  public task2 : any;
+  public task3 : any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -23,9 +26,22 @@ export class RandomPage {
   }
 
   ngOnInit(){
-    this.batterie();
-    this.dbM();
+    this.task = setInterval(()=> {
+      this.batterie();
+    }, 300);
+    this.task2 = setInterval(()=> {
+      this.dbM();
+    }, 300);
+    this.task3 = setInterval(()=> {
+      this.passivToggle();
+    }, 300);
   }
+
+  passivToggle(){
+    if(this.battery > 45)
+      this.flashlight.toggle();
+  }
+  
 
   batterie(){
   let subscription = this.batteryStatus.onChange().subscribe(
